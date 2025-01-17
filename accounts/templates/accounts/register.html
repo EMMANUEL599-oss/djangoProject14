@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light grey background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+        }
+        .register-container {
+            background-color: #ffffff; /* White background for the form */
+            padding: 30px; /* Padding for spacing */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            transition: background-color 0.3s; /* Smooth transition */
+            width: 400px; /* Increased width for the form */
+            max-width: 90%; /* Responsive max-width */
+            height: auto; /* Allow height to adjust */
+        }
+        .register-container:hover {
+            background-color: #e6e6e6; /* Light grey on hover */
+        }
+        h1 {
+            text-align: center; /* Centering the heading */
+            color: #007bff; /* Bootstrap primary blue */
+        }
+        p {
+            text-align: center; /* Centering messages */
+            color: #333; /* Dark grey for text */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Bootstrap primary blue */
+            border-color: #007bff; /* Match border */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3; /* Match border */
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Register</h1>
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
